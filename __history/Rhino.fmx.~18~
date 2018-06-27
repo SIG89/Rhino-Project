@@ -1,0 +1,143 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 700
+  ClientWidth = 900
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object tcRhino: TTabControl
+    Align = Client
+    Size.Width = 691.000000000000000000
+    Size.Height = 651.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 0
+    TabOrder = 4
+    TabPosition = PlatformDefault
+  end
+  object pTop: TPanel
+    Align = Top
+    Size.Width = 900.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object expanderpanel: TPanel
+      Align = FitRight
+      Position.X = 717.000000000000000000
+      Size.Width = 183.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'pushpanel'
+      TabOrder = 1
+      object expanderBtn: TExpander
+        Align = Client
+        ShowCheck = False
+        Size.Width = 183.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Element Hinzuf'#252'gen'
+        TabOrder = 1
+        ContentSize = '24'
+        object btnMitglied: TButton
+          Align = Top
+          Default = True
+          Size.Width = 183.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'btnMitglied'
+          OnClick = btnMitgliedClick
+        end
+        object btnTrainer: TButton
+          Align = Top
+          Position.Y = 66.000000000000000000
+          Size.Width = 183.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Text = 'btnTrainer'
+          OnClick = btnTrainerClick
+        end
+        object btnPlayer: TButton
+          Align = Top
+          Position.Y = 88.000000000000000000
+          Size.Width = 183.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Text = 'btnPlayer'
+          OnClick = btnPlayerClick
+        end
+        object btnSponsor: TButton
+          Align = Top
+          Position.Y = 110.000000000000000000
+          Size.Width = 183.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          Text = 'btnSponsor'
+        end
+        object btnContact: TButton
+          Align = Top
+          Position.Y = 44.000000000000000000
+          Size.Width = 183.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = 'btnContact'
+        end
+        object btnAddress: TButton
+          Align = Top
+          Position.Y = 22.000000000000000000
+          Size.Width = 183.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          Text = 'btnAddress'
+        end
+      end
+    end
+    object btnAdd: TButton
+      Align = FitLeft
+      Size.Width = 73.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'additembutton'
+      TabOrder = 2
+      Text = 'btnAdd'
+      OnClick = btnAddClick
+    end
+    object Button1: TButton
+      Position.X = 152.000000000000000000
+      Position.Y = 8.000000000000000000
+      TabOrder = 4
+      Text = 'Button1'
+    end
+  end
+  object lvRhino: TListView
+    ItemAppearanceClassName = 'TListItemAppearance'
+    ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Left
+    Position.Y = 49.000000000000000000
+    Size.Width = 193.000000000000000000
+    Size.Height = 651.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+  end
+  object splitter: TSplitter
+    Align = Left
+    Cursor = crHSplit
+    MinSize = 20.000000000000000000
+    Position.X = 193.000000000000000000
+    Position.Y = 49.000000000000000000
+    Size.Width = 16.000000000000000000
+    Size.Height = 651.000000000000000000
+    Size.PlatformDefault = False
+  end
+end
