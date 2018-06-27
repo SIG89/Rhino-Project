@@ -1,0 +1,17 @@
+program RhinoProject;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  Rhino in 'Rhino.pas' {Form1},
+  Declarations in '01_Declarations\Declarations.pas',
+  Database in '02_Database\Database.pas' {DBForm},
+  Member in '01_Declarations\Member.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

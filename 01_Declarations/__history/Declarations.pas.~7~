@@ -1,0 +1,237 @@
+unit Declarations;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
+  FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
+  FMX.StdCtrls, FMX.Controls.Presentation, FMX.ListView, FMX.TabControl,
+  FMX.Layouts;
+//Model.ProSu.InterfaceActions, Model.ProSu.Interfaces;
+
+  type
+  TMainFormNewMemberLabelText = record
+        Mitgliedsnummer
+      , Vorname
+      , Nachname
+      , Geburtsdatum
+      , Status
+      , Rolle
+      , Eintrittsdatum
+      , Austrittsdatum
+      , Alter
+      , Stadt
+      , Straße
+      , plz
+      , Nummer
+      , Telefon
+      , Mobil
+      , Mail
+      , Anschrift
+      , Kontakt
+                    :  String;
+  end;
+  type
+  TMainFormTrainerLabelText = record
+        Trainerscheinnummer
+      , Name
+      , Vorname
+      , Trainerscheinkennung
+      , Beschreibung
+      , Ausstellungsdatum
+      , Ablaufdatum
+      , Gültigkeit
+                    : String;
+  end;
+
+    TMainFormNewMemberBtnText = record
+        Bestätigen
+      , Verwerfen   :  String;
+
+  end;
+
+  TMainFormPopUpBoxRolle = record
+          Spieler
+        , Trainer
+        , Ehrenamtliche
+        , Sponsor
+        , aktiv
+        , inaktiv : String;
+  end;
+  {
+  TNotificationClass = class (TInterfacedObject, INotificationClass)
+    private
+      fActions: TInterfaceActions;
+      fActionValue                    : double;
+      fMemberNummmer                  : string;
+      fNachname                       : string;
+      fVorname                        : string;
+      fGeburtstag                     : TDateTime;
+      fAlter                          : integer;
+      fEintritt                       : TDateTime;
+      fAustritt                       : TDateTime;
+      fRolle                          : integer;
+      fStatus                         : integer;
+      fStadt                          : String;
+      fStraße                         : String;
+      fStrNummer                      : Integer;
+      fplz                            : String;
+      fTelefon                        : String;
+      fMobil                          : String;
+      fMail                           : String;
+
+    public
+      property Actions            : TInterfaceActions read fActions write fActions;
+      property ActionValues       : double read fActionValue write fActionValue;
+      property fMemberNummer      : string read fMemberNummmer write fMemberNummmer;
+      property fMemberNachname    : string read fNachname write fNachname;
+      property fMemberVorname     : string read fVorname write fVorname;
+      property fMemberGeburtstag  : TDateTime read fGeburtstag write fGeburtstag;
+      property fMemberAlter       : integer read fAlter write fAlter;
+      property fMemberEintritt    : TDateTime read fEintritt write fEintritt;
+      property fMemberAustritt    : TDateTime read fAustritt write fAustritt;
+      property fMemberRolle       : integer read fRolle write fRolle;
+      property fMemberStatus      : integer read fStatus write fStatus;
+      property fMemberStadt       : String read fStadt write fStadt;
+      property fMemberStraße      : String read fStraße write fStraße;
+      property fMemberStrNummer   : Integer read fStrNummer write fStrNummer;
+      property fMemberplz         : String read fplz write fplz;
+      property fMemberTelefon     : String read fTelefon write fTelefon;
+      property fMemberMobil       : String read fMobil write fMobil;
+      property fMemberMail        : String read fMail write fMail;
+
+
+  end;
+   }
+
+  TMemberGrid = class(TGridLayout)
+      test  : TButton;
+      constructor create (AOwner : TComponent); override;
+
+  end;
+
+  TMemberPanel = class(TPanel)
+
+  private
+      fPanelName : String;
+
+  public
+      MemberGrid : TMemberGrid;
+      constructor create (AOwner : TComponent); override;
+
+  end;
+
+  TMember = class
+    private
+    // Variablen
+        fMemberNr           : String;
+        fName               : String;
+        fSurname            : String;
+        fBirthday           : TDateTime;
+        fAge                : Integer;
+        fEntry              : TDateTime;
+        fLeaving            : TDateTime;
+        fState              : Integer;
+        fRole               : Integer;
+        fStadt              : String;
+        fStraße             : String;
+        fStrNummer          : Integer;
+        fplz                : String;
+        fTelefon            : String;
+        fMobil              : String;
+        fMail               : String;
+    public
+    // Zugriff auf die Variablen
+        property MemberNr           : String    read fMemberNr  write fMemberNr;
+        property Name               : String    read fName      write fName;
+        property Surname            : String    read fSurname   write fSurname;
+        property Birthday           : TDateTime read fBirthday  write fBirthday;
+        property Age                : Integer   read fAge       write fAge;
+        property Entry              : TDateTime read fEntry     write fEntry;
+        property Leaving            : TDateTime read fLeaving   write fLeaving;
+        property State              : Integer   read fState     write fState;
+        property Role               : Integer   read fRole      write fRole;
+        property Stadt              : String    read fStadt     write fStadt;
+        property Straße             : String    read fStraße    write fStraße;
+        property Nummer             : Integer   read fStrNummer write fStrNummer;
+        property plz                : String    read fplz       write fplz;
+        property Telefon            : String    read fTelefon   write fTelefon;
+        property Mobil              : String    read fMobil     write fMobil;
+        property Mail               : String    read fMail      write fMail;
+  end;
+
+  TTrainer = class
+    private
+    // Variablen
+        fTrainerscheinnummer       : String;
+        fName                      : String;
+        fVorname                   : String;
+        fMitgliedsnummer           : String;
+        fTrainerscheinkennung      : String;
+        fAusstellungsdatum         : TDate;
+        fAblaufdatum               : TDate;
+        fGültigkeit                : Integer;
+        fBeschreibung              : String;
+
+    public
+    // Zugriff auf die Variablen
+      property  Trainerscheinnummer : String  read  fTrainerscheinnummer  write fTrainerscheinnummer;
+      property  Name                : String  read  fName                 write fName;
+      property  Vorname             : String  read  fVorname              write fVorname;
+      property  Scheinkennung       : String  read  fTrainerscheinnummer  write fTrainerscheinnummer;
+      property  Ausstellungsdatum   : TDate   read  fAusstellungsdatum    write fAusstellungsdatum;
+      property  Ablaufdatum         : TDate   read  fAblaufdatum          write fABlaufdatum;
+      property  Gültigkeit          : Integer read  fGültigkeit           write fGültigkeit;
+      property  Beschreibung        : String  read  fBeschreibung         write fBeschreibung;
+      property  Mitgliedernummer    : String  read  fMitgliedsnummer      write fMitgliedsnummer;
+  end;
+
+  TMemberDetailsText = record
+       Mitgliedsnummer
+      , Vorname
+      , Nachname
+      , Geburtsdatum
+      , Status
+      , Rolle
+      , Eintrittsdatum
+      , Austrittsdatum
+      , Alter
+      , Stadt
+      , Straße
+      , plz
+      , Nummer
+      , Telefon
+      , Mobil
+      , Mail
+      , Anschrift
+      , Kontakt
+                    :  String;
+  end;
+implementation
+
+ constructor TMemberPanel.create(AOwner : TComponent);
+ begin
+
+   Inherited create(aowner);
+
+   MemberGrid           := TMembergrid.create(self);
+   MemberGrid.parent    := self;
+   MemberGrid.Align     := MemberGrid.Align.alClient;
+
+ end;
+
+ constructor TMemberGrid.Create(AOwner: TComponent);
+ begin
+    inherited create(aOwner);
+
+    test        := TButton.Create(self);
+    test.Parent := self;
+    test.Name   := 'MemberTest';
+    test.Text   := TMemberPanel.ClassName;
+ end;
+
+
+
+
+end.
