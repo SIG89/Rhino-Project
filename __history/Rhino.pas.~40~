@@ -25,6 +25,7 @@ type
     btnSponsor: TButton;
     btnAddress: TButton;
     btnAdd: TButton;
+    Button1: TButton;
     procedure btnMitgliedClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnTrainerClick(Sender: TObject);

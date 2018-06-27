@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 593
-  ClientWidth = 767
+  ClientHeight = 700
+  ClientWidth = 900
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -11,24 +11,23 @@ object Form1: TForm1
   OnDestroy = FormDestroy
   DesignerMasterStyle = 0
   object tcRhino: TTabControl
-    Align = Left
-    Position.X = 209.000000000000000000
-    Position.Y = 49.000000000000000000
-    Size.Width = 544.000000000000000000
-    Size.Height = 544.000000000000000000
+    Align = Client
+    Size.Width = 691.000000000000000000
+    Size.Height = 651.000000000000000000
     Size.PlatformDefault = False
+    TabIndex = 0
     TabOrder = 4
     TabPosition = PlatformDefault
   end
   object pTop: TPanel
     Align = Top
-    Size.Width = 767.000000000000000000
+    Size.Width = 900.000000000000000000
     Size.Height = 49.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object expanderpanel: TPanel
       Align = FitRight
-      Position.X = 584.000000000000000000
+      Position.X = 717.000000000000000000
       Size.Width = 183.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -110,6 +109,13 @@ object Form1: TForm1
       StyleLookup = 'additembutton'
       TabOrder = 2
       Text = 'btnAdd'
+      OnClick = btnAddClick
+    end
+    object Button1: TButton
+      Position.X = 96.000000000000000000
+      Position.Y = 8.000000000000000000
+      TabOrder = 4
+      Text = 'Button1'
     end
   end
   object lvRhino: TListView
@@ -120,7 +126,7 @@ object Form1: TForm1
     Align = Left
     Position.Y = 49.000000000000000000
     Size.Width = 193.000000000000000000
-    Size.Height = 544.000000000000000000
+    Size.Height = 651.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
   end
@@ -131,7 +137,7 @@ object Form1: TForm1
     Position.X = 193.000000000000000000
     Position.Y = 49.000000000000000000
     Size.Width = 16.000000000000000000
-    Size.Height = 544.000000000000000000
+    Size.Height = 651.000000000000000000
     Size.PlatformDefault = False
   end
 end
