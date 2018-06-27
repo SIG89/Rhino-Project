@@ -111,12 +111,6 @@ object Form1: TForm1
       Text = 'btnAdd'
       OnClick = btnAddClick
     end
-    object Button1: TButton
-      Position.X = 152.000000000000000000
-      Position.Y = 8.000000000000000000
-      TabOrder = 4
-      Text = 'Button1'
-    end
   end
   object lvRhino: TListView
     ItemAppearanceClassName = 'TListItemAppearance'
