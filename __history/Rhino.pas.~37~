@@ -7,7 +7,8 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.ListView, FMX.TabControl,
-  declarations, FMX.Layouts, Member;
+  declarations, FMX.Layouts, FMX.Platform, System.Generics.Collections, Member,
+  FMX.Edit;
 
 type
   TForm1 = class(TForm)
@@ -32,12 +33,22 @@ type
     procedure btnAddClick(Sender: TObject);
   private
     { Private-Deklarationen }
+
+    // Funktionen
+
+    // Listen
+    Members :  TObjectList<TMember>;
+
+    // Objekte
     FTestPanel    : TMemberPanel;
     Mitglied      : TTabItem;
     btnMember     : TButton;
+    // Prozeduren
+    procedure FillListView;
+    procedure ClearListView;
+    procedure ClearTabControl;
+    procedure ShowScreenSize;
 
-    // Listen
-    Members : TObjectList<TMember>;
   public
     { Public-Deklarationen }
   end;
@@ -57,13 +68,16 @@ var
    tmpNewMember   : TMember;
    LItem          : TListViewItem;
 begin
+
     // Mitglied erzeugen;
       tmpNewMember         := TMember.Create;
       tmpNewMember.Name    := 'Neues';
       tmpNewMember.Surname := 'Mitglied';
-    //  Members.add(tmpNewMember);                => Liste muss noch erzeugt werden
+      Members.add(tmpNewMember);
+
     // TabControl Mitgliedelement einfügen
     tcRhino.BeginUpdate;
+      if tcRhino.TabCount > 0 then clearTabControl;
       Mitglied             :=  TTabItemClass.Create(self);
       Mitglied.Parent      :=  tcRhino;
       Mitglied.Name        := 'Mitglied' + intToStr(tcRhino.TabCount);
@@ -76,17 +90,53 @@ begin
       FTestPanel.Panel     := GMemberPanelNumber;
       FTestPanel.createObjects(GMemberPanelNumber);
     tcRhino.EndUpdate;
-    // ListView Mitgliedelement einfügen
-    lvRhino.BeginUpdate;
-      for i := 0 to index do
+
+    ClearListView;
+    FillListView;
+end;
+
+procedure TForm1.FillListView;
+var
+  I           : Integer;
+  LItem       : TListViewItem;
+  tmpMember   : TMember;
+  tmpTrainer  : TTrainer;
+  index       : integer;
+begin
+  try
+  index := Members.Count;
+  index := index - 1 ;
+      lvRhino.BeginUpdate;
+        for i := 0 to index do
+      begin
+        tmpMember     := (Members.Items[i]) as TMember;
+        LItem         := lvRhino.Items.Add;
+        LItem.Text    := tmpMember.Name + ', ' + tmpMember.Surname;
+        LItem.Detail  := inttostr(Members.IndexOf(tmpMember));
+      end;
+      lvRhino.EndUpdate;
+  except
+      showMessage('klappt nicht');
+  end;
+end;
+
+procedure TForm1.ClearListView;
+begin
+  lvRhino.BeginUpdate;
+        lvRhino.Items.Clear;
+  lvRhino.EndUpdate
+end;
+
+procedure TForm1.ClearTabControl;
+var
+    I : integer;
+begin
+  tcRhino.BeginUpdate;
+        for I := 0 to tcrhino.TabCount-1 do
         begin
-//          tmpNewMember      := (Members.Items[i]) as TMember;
-          LItem             := lvRhino.Items.Add;
-          LItem.Text        := tmpNewMember.Name + ', '
-                                + tmpNewMember.Surname;
-//          LItem.Detail      := inttostr(Members.IndexOf(tmpNewMember));
+           tcrhino.Tabs[0].Free;
         end;
-    lvRhino.EndUpdate;
+  tcRhino.EndUpdate;
 end;
 
 procedure TForm1.btnMitgliedClick(Sender: TObject);
@@ -118,9 +168,31 @@ begin
     tcRhino.EndUpdate;
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TForm1.ShowScreenSize;
+var
+   clientScreenScale   : Single;
+   clientScreenSize    : TSize;
+   clientScreenService : IFMXScreenService;
 begin
+  if TPlatformServices.Current.SupportsPlatformService(IFMXScreenService, IInterface(clientScreenService)) then
+  begin
+    clientScreenScale   := clientScreenService.GetScreenScale;
+  end
+  else clientScreenScale   := 1;
+  clientScreenSize.CX   := Round(clientScreenService.GetScreenSize.X*clientScreenScale);
+  clientScreenSize.CY   := Round(clientScreenService.GetScreenSize.Y*clientScreenScale);
+  //showmessage(inttostr(clientScreenSize.CX) + ' ' +inttostr(clientScreenSize.CY));
+  Form1.Width  := clientScreenSize.CX;
+  Form1.Height := clientScreenSize.CY;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+var
+  Test : TMember;
+begin
+      //ShowScreenSize;
       expanderBtn.IsExpanded := false;
+      Members                := TObjectList<TMember>.Create;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
